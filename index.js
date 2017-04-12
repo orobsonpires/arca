@@ -1,5 +1,7 @@
 var http = require('http');
-var speciesService = require('./lib/species')
+var speciesService = require('./lib/species');
+var responder = require('./lib/responseGenerator');
+var staticFile = responder.staticFile('/public');
 
 http.createServer(function handler(req, res) {
 
@@ -19,26 +21,36 @@ http.createServer(function handler(req, res) {
 
 	if (_url = /^\/species$/.exec(req.url)) {
 
-		speciesService.getSingleSpecies(function(error, data) {
+		speciesService.getSpecies(function(error, data) {
+			if (error)
+				return responder.send500(error, res);
+
+			if (!data)
+				return responder.send404(res);
+
+			return responder.sendJson(data, res);
 
 		});
 
-		return res.end('species list');
 	} else if (_url = /^\/species\/(\d+)$/i.exec(req.url)) {
-		
+
 		var speciesId = _url[1];
-		
+
 		speciesService.getSingleSpecies(speciesId, function(error, data) {
-			
+
+			if (error)
+				return responder.send500(error, res);
+
+			if (!data)
+				return responder.send404(res);
+
+			return responder.sendJson(data, res);
+
 		});
-		
-		return res.end('a single species')
 	} else {
 		res.writeHead(200);
-		return res.end('static file maybe')
+		return staticFile(req.url, res);
 	}
-
-	res.end('The current time is: ' + Date.now());
 
 }).listen(1337, '127.0.0.1');
 
