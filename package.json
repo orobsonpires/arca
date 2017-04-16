@@ -16,6 +16,9 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "colors": "^1.1.2"
+    "async": "^2.3.0",
+    "colors": "^1.1.2",
+    "mongoose": "^4.9.4",
+    "mongoose-post-find": "0.0.2"
   }
 }
