@@ -11,6 +11,10 @@ var CategorySchema = new Schema({
 		type : string,
 		required : true
 	},
+	type : {
+		type : string,
+		required : true
+	},
 	scientificName : {
 		type : string
 	},
