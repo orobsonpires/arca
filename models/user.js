@@ -6,26 +6,26 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 	id : {
-		type : string,
+		type : String,
 		required : true,
 		unique : true
 	},
 	userName : {
-		type : string,
+		type : String,
 		required : true,
 		unique : true
 	},
 	password : {
-		type : string,
+		type : String,
 		required : true
 	},
 	email : {
-		type : string,
+		type : String,
 		required : true,
 		unique : true
 	},
 	image: {
-		type: string,
+		type: String,
 		default: 'images/user.png'
 	},
 	registeredCategories: {
