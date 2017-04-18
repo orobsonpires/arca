@@ -1,24 +1,29 @@
 {
-  "name": "arca",
-  "version": "0.1.0",
-  "description": "arca",
-  "main": "hello-world-server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
-  },
-  "repository": "",
-  "keywords": [
-    "node.js",
-    "eclipse",
-    "nodeclipse"
-  ],
-  "author": "",
-  "license": "MIT",
-  "readmeFilename": "README.md",
-  "dependencies": {
-    "async": "^2.3.0",
-    "colors": "^1.1.2",
-    "mongoose": "^4.9.4",
-    "mongoose-post-find": "0.0.2"
-  }
+	"name": "arca",
+	"version": "0.1.0",
+	"description": "arca",
+	"main": "hello-world-server.js",
+	"scripts": 
+	{
+		"populate": "node ./bin/populate_db"
+	},
+
+	"repository": "",
+	"keywords": 
+	[
+		"node.js",
+		"eclipse",
+		"nodeclipse"
+	],
+
+	"author": "",
+	"license": "MIT",
+	"readmeFilename": "README.md",
+	"dependencies": 
+	{
+		"async": "^2.3.0",
+		"colors": "^1.1.2",
+		"mongoose": "^4.9.4",
+		"mongoose-post-find": "0.0.2"
+	}
 }

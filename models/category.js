@@ -3,33 +3,33 @@ var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema({
 	id : {
-		type : string,
+		type : String,
 		required : true,
 		unique : true
 	},
 	name : {
-		type : string,
-		required : true
-	},
-	type : {
-		type : string,
+		type : String,
 		required : true
 	},
 	scientificName : {
-		type : string
+		type : String
 	},
 	conservationStatus : {
-		type : string
+		type : String
 	},
 	binomialName : {
-		type : string
+		type : String
+	},
+	type : {
+		type : Schema.Types.ObjectId,
+		ref : 'CategoryType'
 	},
 	parentCategory : {
-		type : Schema.Types.ObjectID,
+		type : Schema.Types.ObjectId,
 		ref : 'Category'
 	},
 	registerBy : {
-		type : Schema.Types.ObjectID,
+		type : Schema.Types.ObjectId,
 		ref : 'User'
 	}
 });
