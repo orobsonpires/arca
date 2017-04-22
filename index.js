@@ -1,6 +1,8 @@
 var http = require('http');
 var speciesService = require('./lib/species');
 var responder = require('./lib/responseGenerator');
+require('./lib/connection');
+
 var staticFile = responder.staticFile('/public');
 
 http.createServer(function handler(req, res) {
@@ -13,7 +15,7 @@ http.createServer(function handler(req, res) {
 
 	if (req.method !== 'GET') {
 		res.writeHead(501, {
-			'Content-Type' : 'text/plain'
+			'Content-Type': 'text/plain'
 		});
 
 		return res.end(req.method + ' is not implemented by this server.')
@@ -21,7 +23,7 @@ http.createServer(function handler(req, res) {
 
 	if (_url = /^\/species$/.exec(req.url)) {
 
-		speciesService.getSpecies(function(error, data) {
+		speciesService.getSpecies(function (error, data) {
 			if (error)
 				return responder.send500(error, res);
 
@@ -36,7 +38,7 @@ http.createServer(function handler(req, res) {
 
 		var speciesId = _url[1];
 
-		speciesService.getSingleSpecies(speciesId, function(error, data) {
+		speciesService.getSingleSpecies(speciesId, function (error, data) {
 
 			if (error)
 				return responder.send500(error, res);
