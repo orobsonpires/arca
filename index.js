@@ -1,5 +1,5 @@
 var http = require('http');
-var speciesService = require('./lib/species');
+var categoriesService = require('./lib/categories');
 var responder = require('./lib/responseGenerator');
 require('./lib/connection');
 
@@ -23,7 +23,7 @@ http.createServer(function handler(req, res) {
 
 	if (_url = /^\/species$/.exec(req.url)) {
 
-		speciesService.getSpecies(function (error, data) {
+		categoriesService.getCategories(function (error, data) {
 			if (error)
 				return responder.send500(error, res);
 
@@ -36,9 +36,9 @@ http.createServer(function handler(req, res) {
 
 	} else if (_url = /^\/species\/(\d+)$/i.exec(req.url)) {
 
-		var speciesId = _url[1];
+		var categoryId = _url[1];
 
-		speciesService.getSingleSpecies(speciesId, function (error, data) {
+		categoriesService.getCategory(categoryId, function (error, data) {
 
 			if (error)
 				return responder.send500(error, res);
